@@ -1,0 +1,6 @@
+@import 'src/variables';
+
+.models__column--items {
+    padding: 10px;
+    background-color: lighten(mat-color($accent), 15%);
+}

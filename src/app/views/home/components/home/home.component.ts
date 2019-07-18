@@ -1,9 +1,9 @@
 import { Observable } from 'rxjs';
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { NgxElectronModule } from 'ngx-electron';
 import { untilDestroyed } from '@orchestrator/ngx-until-destroyed';
 import { Store, Select } from '@ngxs/store';
-import { PositionState, PositionStateModel } from '../position/position.state';
+import { WorkPositionState, WorkPositionStateModel } from '../work-position/state/work-position.state';
+import { WorkPosition } from '../work-position/state/work-position';
 
 @Component({
   selector: 'app-home',
@@ -13,21 +13,19 @@ import { PositionState, PositionStateModel } from '../position/position.state';
 })
 export class HomeComponent implements OnInit, OnDestroy {
 
-  private position: Position;
+  private position: WorkPosition;
 
-  @Select(PositionState) data$: Observable<PositionStateModel>;
+  @Select(WorkPositionState) data$: Observable<WorkPositionStateModel>;
 
-  constructor() { }
+  constructor(private store: Store) { }
 
   ngOnInit() {
     this.data$.pipe(untilDestroyed(this))
-      .subscribe((data: PositionStateModel) => { this.position = data.position; });
-    // this.userDataService$.getData()
-    //   .pipe(untilDestroyed(this))
-    //   .subscribe(data => { this.data = data; });
+      .subscribe((data: WorkPositionStateModel) => {
+        this.position = data.workPosition;
+      });
   }
 
   ngOnDestroy() {
-    // this.userDataService$.saveData(this.data);
   }
 }

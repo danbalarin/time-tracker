@@ -1,0 +1,34 @@
+<form [formGroup]="form" disabled (submit)="save()">
+  <mat-form-field class="w-100">
+    <input matInput placeholder="Position name" formControlName="name">
+  </mat-form-field>
+
+  <mat-form-field class="w-100">
+    <input matInput placeholder="Company" formControlName="company">
+  </mat-form-field>
+
+  <mat-form-field class="w-100">
+    <input matInput type="number" placeholder="Net wage" formControlName="netWage">
+  </mat-form-field>
+
+  <mat-form-field class="w-100">
+    <input matInput type="number" placeholder="Workload size" formControlName="workloadSize">
+  </mat-form-field>
+
+  <mat-form-field class="w-100">
+    <input matInput type="number" placeholder="Overtime bonus" formControlName="overtimeBonus">
+  </mat-form-field>
+
+  <div fxLayout="row" fxLayoutAlign="space-between center" fxLayoutGap="10px" *ngIf="!isDisabled">
+    <button type="button" mat-stroked-button (click)="isDisabled = true">
+      <mat-icon>cancel</mat-icon>
+    </button>
+    <button type="submit" mat-flat-button color="accent" (click)="save()">
+      <mat-icon>done</mat-icon>
+    </button>
+  </div>
+
+  <button mat-flat-button color="accent" style="float: right;" (click)="isDisabled = false" *ngIf="isDisabled">
+    <mat-icon>build</mat-icon>
+  </button>
+</form>

@@ -1,3 +1,20 @@
-<p>
-  home works!
-</p>
+<mat-toolbar color="primary">
+  <span>Time Tracker</span>
+</mat-toolbar>
+<div class="container" fxLayout="row" fxLayout.xs="column" fxLayoutWrap fxLayoutGap="0.5%" style="height: 100%">
+  <div fxLayout="column" fxFlex="20%">
+    <mat-toolbar color="accent">
+      <span>Models</span>
+    </mat-toolbar>
+    <div class="models__column--items">
+      <mat-expansion-panel>
+        <mat-expansion-panel-header>
+          <mat-panel-title>
+            Work position
+          </mat-panel-title>
+        </mat-expansion-panel-header>
+        <work-position></work-position>
+      </mat-expansion-panel>            
+    </div>
+  </div>
+</div>
